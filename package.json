@@ -1,0 +1,21 @@
+{
+  "name": "projeto-integrador",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Projeto Integrador — NAPORTA · Culinária com Afeto",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/regression.cjs",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0"
+  }
+}

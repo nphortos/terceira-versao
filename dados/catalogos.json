@@ -1,0 +1,87 @@
+{
+  "brindes": [
+    {
+      "name": "Buquê de Afeto",
+      "desc": "Flores e um docinho. Um carinho para surpreender, agradecer ou levar um pouco de doçura ao dia de quem você quer bem.",
+      "img": "assets/buque-com-biscoito-artesanal.webp"
+    },
+    {
+      "name": "Caixinha de Aconchego",
+      "desc": "Uma caixinha para presentear com uma pausa gostosa: cookies de sabores sortidos, Cappuccino Pronto Caramelo Salgado da linha Cappuccino Lovers, da 3 Corações (260 ml), e um sachê de café tradicional em pó. Tudo junto para acompanhar um momento de calma e dizer: lembrei de você."
+    },
+    {
+      "name": "Cesta Bom Dia com Afeto",
+      "desc": "Um café da manhã preparado com carinho para começar o dia e se sentir amado. Cookies, croissant, frutas e suco em uma cesta cuidada nos detalhes. Um jeito gostoso de estar perto, mesmo quando você não pode estar.",
+      "img": "assets/cesta-bom-dia-com-afeto.webp"
+    },
+    {
+      "name": "Lembrança para clientes",
+      "desc": "Um cartão com uma mensagem de carinho e um biscoito amanteigado para acompanhar. Um mimo delicado para agradecer a quem faz parte da sua história e deixar esse encontro um pouquinho mais doce.",
+      "img": "assets/cartao-artesanal-com-biscoito.webp"
+    },
+    {
+      "name": "Sacolinha de Carinho",
+      "desc": "Suco de laranja e um potinho de mini cookies, juntos em uma sacolinha pronta para presentear. Um mimo para acompanhar uma pausa gostosa e lembrar que os pequenos cuidados também são uma forma de afeto.",
+      "img": "assets/sacolinha-de-carinho.webp"
+    }
+  ],
+  "eventos": [
+    {
+      "name": "Cartão Amanteigado",
+      "desc": "Um cartão cheio de carinho, acompanhado de um delicioso biscoito amanteigado. Um mimo memorável para adoçar o Natal e tornar essa linda data ainda mais especial.",
+      "img": "assets/postal-natal-biscoito.webp"
+    },
+    {
+      "name": "Doce Encontro",
+      "desc": "Chocolate ao leite e pedacinhos da nossa tradicional massa amanteigada de cookies se encontram em uma barra cheia de afeto. São 90g de um encontro perfeito para adoçar o Natal.",
+      "img": "assets/doce-encontro-natal.webp"
+    },
+    {
+      "name": "Cookie Surpresa",
+      "desc": "A primeira mordida revela uma doce surpresa! Sabores inéditos no nosso cardápio e combinações incríveis esperam por você. São 50g de muito sabor e afeto para descobrir e se encantar neste Natal.",
+      "img": "assets/chocolates-natal.webp"
+    },
+    {
+      "name": "Bolo Porcelana",
+      "desc": "Um bolo fofinho de cenoura, com recheio cremoso de chocolate preto e carinho em cada detalhe. A cobertura de porcelana recebe uma pintura personalizada, feita à mão, para tornar cada bolo especial. Em uma embalagem elegante e pronta para presentear, é um doce gesto de afeto para encantar neste Natal.",
+      "img": "assets/bolo-porcelana-natal.webp"
+    },
+    {
+      "name": "Pote Amanteigado",
+      "desc": "Um pote cheio de carinho, com 500g de biscoitos amanteigados sortidos. Sabores delicados para compartilhar bons momentos ou presentear com afeto neste Natal.",
+      "img": "assets/pote-amanteigado-natal.webp"
+    },
+    {
+      "name": "Mini cookies",
+      "desc": "Nossos clássicos em pequenos bocados de afeto! Mini cookies sortidos nos sabores cacau, beijinho, brigadeiro e tradicional, em uma embalagem cheia de charme para presentear e adoçar o Natal de quem você ama.",
+      "img": "assets/mini-cookies-natal.webp"
+    }
+  ],
+  "catering": [
+    {
+      "name": "Combo de Cookie Tradicional",
+      "desc": "São 3 cookies de 50 g cada, com massa amanteigada e gotinhas de chocolate preto. Aquele sabor que sempre pede mais um pedacinho, em um combo para prolongar a pausa e dividir o que é bom.",
+      "img": "assets/combo-cookie-tradicional.webp"
+    },
+    {
+      "name": "Combo de Cookie Cacau",
+      "desc": "São 3 cookies de 50 g cada, com massa amanteigada de cacau e gotinhas de chocolate preto. Aquele sabor intenso que abraça, em um combo para prolongar a pausa e compartilhar o amor por chocolate.",
+      "img": "assets/combo-cookie-cacau.webp"
+    },
+    {
+      "name": "Combo de Cookie Beijinho",
+      "desc": "São 3 cookies recheados de 100 g cada, com massa amanteigada e recheio cremoso de beijinho. Aquele sabor de coco que traz um carinho a mais, em um combo para prolongar a pausa e espalhar doçura.",
+      "img": "assets/combo-beijinho-brigadeirao.webp"
+    },
+    {
+      "name": "Combo de Cookie Brigadeirão",
+      "desc": "São 3 cookies recheados de 100 g cada, com massa de cacau, recheio de brigadeiro e cobertura de chocolate. Aquele capricho que deixa o dia mais gostoso, em um combo para prolongar a pausa e dividir uma boa dose de afeto.",
+      "img": "assets/combo-beijinho-brigadeirao.webp"
+    },
+    {
+      "name": "Combo de Reposição de Biscoito Amanteigado",
+      "desc": "São 3 unidades de refil de biscoitos amanteigados, com sabor delicado e aquele gostinho de casa que acompanha uma boa conversa. Um combo para repor seu pote e prolongar os momentos de afeto.",
+      "img": "assets/biscoitos-amanteigados-refil.webp"
+    }
+  ]
+}

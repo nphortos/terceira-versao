@@ -1,0 +1,38 @@
+[
+  {
+    "id": "beijinho",
+    "name": "Cookie Beijinho",
+    "price": 12,
+    "img": "assets/cookie-beijinho.webp",
+    "desc": "Um beijinho para deixar o dia mais doce! Nossa massa amanteigada com gotas de chocolate preto abraça um recheio cremoso de beijinho, trazendo o sabor do coco em cada mordida. São 100g de cookie feito com afeto, para saborear com calma e guardar um carinho na memória.",
+    "available": true,
+    "placeholder": false
+  },
+  {
+    "id": "brigadeirao",
+    "name": "Cookie Brigadeirão",
+    "price": 12,
+    "img": "assets/cookie-brigadeirao.webp",
+    "desc": "Tem dias que pedem um capricho a mais no chocolate. Nosso Brigadeirão combina massa preparada com cacau 100%, recheio de brigadeiro cremoso de cacau e cobertura de chocolate. O cookie completo tem 100g, com a intensidade do cacau e a doçura do brigadeiro se encontrando em cada mordida. Feito com carinho para aquele momento só seu.",
+    "available": true,
+    "placeholder": false
+  },
+  {
+    "id": "tradicional",
+    "name": "Cookie Tradicional",
+    "price": 6,
+    "img": "assets/cookie-tradicional.webp",
+    "desc": "Tem clássico que sempre encontra um lugar na nossa pausa. Nosso Cookie Tradicional combina massa amanteigada, preparada com manteiga noisette e gotinhas de chocolate preto que deixam cada mordida ainda mais gostosa. São 50g de cookie feito com carinho, para acompanhar um cafezinho, uma boa conversa ou um momento só seu.",
+    "available": true,
+    "placeholder": false
+  },
+  {
+    "id": "cacau",
+    "name": "Cookie Cacau",
+    "price": 6,
+    "img": "assets/cookie-cacau.webp",
+    "desc": "Para quem gosta de uma pausa com sabor de chocolate. Nosso Cookie Cacau combina massa amanteigada, preparada com manteiga noisette e cacau 100%, com gotinhas de chocolate preto. São 50g de cookie com sabor intenso e carinho em cada detalhe, para deixar os pequenos momentos do dia ainda mais gostosos.",
+    "available": true,
+    "placeholder": false
+  }
+]

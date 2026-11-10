@@ -1,0 +1,23 @@
+[
+  {
+    "id": "brindes",
+    "title": "Afeto para Presentear",
+    "img": "assets/presente-rustico-floral.webp",
+    "short": "Presente feito com afeto e embalado com cuidado para presentear alguém querido.",
+    "body": "Um biscoito, um café e o carinho de ser lembrado. Preparamos cada mimo com cuidado para você agradecer, celebrar ou simplesmente dizer: lembrei de você."
+  },
+  {
+    "id": "eventos",
+    "title": "HO HO HO",
+    "img": "assets/cardapio-natal.webp",
+    "short": "O Natal fica mais doce com afeto. Biscoitos e presentes para compartilhar a magia dessa época especial. Encomendas até {{prazoNatal}} ou enquanto durarem os estoques.",
+    "body": "Biscoitos artesanais e presentes de Natal preparados com carinho para surpreender e celebrar com quem você ama. Recebemos encomendas até {{prazoNatal}} ou enquanto durarem os estoques. Garanta seu carinho de Natal!"
+  },
+  {
+    "id": "catering",
+    "title": "Afeto Triplo",
+    "img": "assets/combos-e-promocoes-catering.webp",
+    "short": "O que é bom pode ficar três vezes melhor. Combos para prolongar a pausa, dividir sorrisos e multiplicar o afeto.",
+    "body": "O que é bom pode ficar três vezes melhor. No Afeto Triplo, seus sabores favoritos viram combos para prolongar a pausa, dividir sorrisos e multiplicar o afeto. Escolha entre Tradicional, Cacau, Beijinho, Brigadeirão ou a reposição de biscoito amanteigado e deixe esse carinho fazer parte dos seus momentos."
+  }
+]

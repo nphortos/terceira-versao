@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NAPORTA | Culinária com Afeto</title>
+    <meta name="description" content="NAPORTA — Culinária com Afeto: cookies artesanais, presentes preparados com carinho, combos e sabores de Natal.">
+    <meta name="theme-color" content="#F5EBDD">
+    <link rel="icon" type="image/png" href="/assets/porta-marca.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div id="app"></div><noscript>
+        <p style="padding:24px;text-align:center">Para ver o site da NAPORTA, ative o JavaScript no seu navegador. Enquanto isso, fale com a gente pelo WhatsApp: +55 47 99700-8349.</p>
+    </noscript>
+    <script src="/js/configuracao.js"></script>
+    <script src="/js/paginas.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/chatbot.js?v=mascote-opaco-3"></script>
+    <script>
+        /* Movimento delicado do fundo conforme a rolagem, respeitando acessibilidade. */
+        (() => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            let pending = false;
+            const update = () => {
+                const y = Math.max(-42, -Math.min(42, window.scrollY * 0.055));
+                document.body.style.setProperty('--naporta-parallax', y.toFixed(1) + 'px');
+                pending = false;
+            };
+            window.addEventListener('scroll', () => {
+                if (!pending) {
+                    pending = true;
+                    requestAnimationFrame(update);
+                }
+            }, {
+                passive: true
+            });
+            update();
+        })();
+    </script>
+</body>
+
+</html>
