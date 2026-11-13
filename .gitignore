@@ -1,4 +1,7 @@
 node_modules/
+output/
+tests/
+CORRECOES.md
 documentacao/
 verificacoes/
 .vscode/

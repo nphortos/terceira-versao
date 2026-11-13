@@ -2,20 +2,55 @@
     const WA = 'https://wa.me/' + CONFIG.whatsapp;
     const root = document.createElement('div');
     root.className = 'afeto-chat';
-    root.innerHTML = `<button class="afeto-launch" type="button" aria-label="Abrir atendimento virtual" aria-expanded="false"><img src="/assets/mascote-chat.webp?v=mascote-opaco-3" alt="Rottweiler da NAPORTA com um cookie" /><span class="afeto-launch-label">Posso ajudar?</span></button><section class="afeto-panel" aria-label="Assistente virtual Afeto" hidden><header class="afeto-head"><div><strong>♡ Afeto | NAPORTA</strong><small>Assistente virtual · respostas automáticas</small></div><button class="afeto-close" aria-label="Fechar chat">×</button></header><div class="afeto-messages" aria-live="polite"><p class="afeto-bot">Olá! Que bom ter você por aqui! 🤎 Como posso ajudar?</p></div><form class="afeto-form"><input aria-label="Digite sua pergunta" placeholder="Digite sua pergunta..." maxlength="300" required/><button aria-label="Enviar pergunta" type="submit">➜</button></form></section>`;
+    root.innerHTML = `<button class="afeto-launch" type="button" aria-label="Posso ajudar? Abrir atendimento virtual" aria-expanded="false" aria-controls="afeto-panel" aria-haspopup="dialog"><img src="/assets/mascote-chat.webp?v=mascote-opaco-3" alt="" /><span class="afeto-launch-label">Posso ajudar?</span></button><dialog id="afeto-panel" class="afeto-panel" aria-labelledby="afeto-title" hidden><div class="afeto-head"><div><strong id="afeto-title">♡ Afeto | NAPORTA</strong><small>Assistente virtual · respostas automáticas</small></div><button class="afeto-close" type="button" aria-label="Fechar chat">×</button></div><div class="afeto-messages" role="log" aria-label="Conversa com Afeto" aria-live="polite" tabindex="0"><p class="afeto-bot">Olá! Que bom ter você por aqui! 🤎 Como posso ajudar?</p></div><form class="afeto-form"><label class="sr-only" for="afeto-question">Digite sua pergunta</label><input id="afeto-question" placeholder="Digite sua pergunta..." maxlength="300" required/><button aria-label="Enviar pergunta" type="submit">➜</button></form></dialog>`;
     document.body.append(root);
     const panel = root.querySelector('.afeto-panel'),
         launch = root.querySelector('.afeto-launch'),
         messages = root.querySelector('.afeto-messages');
 
+    const mobile = window.matchMedia('(max-width:600px)');
+    function placeLauncher() {
+        // No celular, o atalho faz parte do cabeçalho e nunca cobre o conteúdo.
+        const target = mobile.matches ? document.querySelector('.header .icons') : document.body;
+        if (target && root.parentElement !== target) {
+            const reopen = panel.open;
+            const focused = document.activeElement;
+            if (reopen) panel.close();
+            target.append(root);
+            if (reopen) { panel.showModal(); if (panel.contains(focused)) focused.focus(); }
+        }
+        launch.querySelector('.afeto-launch-label').textContent = mobile.matches ? 'Ajuda' : 'Posso ajudar?';
+        launch.setAttribute('aria-label', mobile.matches ? 'Ajuda: abrir atendimento virtual' : 'Posso ajudar? Abrir atendimento virtual');
+    }
+    placeLauncher();
+    mobile.addEventListener('change', placeLauncher);
+    document.addEventListener('naporta:render', () => {
+        // Uma navegação ou atualização não mantém um diálogo desconectado aberto.
+        const wasOpen = panel.open && !root.isConnected;
+        if (wasOpen) { panel.close(); panel.hidden = true; launch.setAttribute('aria-expanded', 'false'); }
+        placeLauncher();
+    });
+
     function toggle(open) {
-        panel.hidden = !open;
+        if (open) { panel.hidden = false; panel.showModal(); }
+        else { panel.close(); panel.hidden = true; }
         launch.setAttribute('aria-expanded', String(open));
         const target = open ? root.querySelector('input') : launch;
         target.focus({ preventScroll: true });
     }
     launch.addEventListener('click', () => toggle(panel.hidden));
     root.querySelector('.afeto-close').addEventListener('click', () => toggle(false));
+    panel.addEventListener('cancel', e => { e.preventDefault(); toggle(false); });
+    panel.addEventListener('keydown', e => {
+        if (e.key !== 'Tab') return;
+        const controls = [...panel.querySelectorAll('button, a[href], input, [tabindex="0"]')]
+            .filter(el => !el.disabled && el.getClientRects().length);
+        const first = controls[0], last = controls[controls.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    // Links internos fecham o diálogo antes da navegação e do foco no novo H1.
+    panel.addEventListener('click', e => { if (e.target.closest('a[href^="/"]')) toggle(false); });
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && !panel.hidden) {
             e.preventDefault();
@@ -35,6 +70,7 @@
         sombrio: [textoMarca("Em Sombrio, a entrega em domicílio custa {{entregaSombrio}}, em data e horário combinados. Se preferir outro ponto de encontro, confirme as condições pelo WhatsApp."), 'Combinar entrega', askTeam('Gostaria de combinar uma entrega em Sombrio.')],
         blumenau: ['Entregamos em Blumenau conforme disponibilidade. As datas e o valor da entrega são confirmados no orçamento, antes de fechar sua encomenda.', 'Consultar Blumenau', askTeam('Gostaria de consultar datas e valor de entrega em Blumenau.')],
         entrega: [textoMarca("Em Sombrio, a retirada no IFC é gratuita e a entrega em domicílio custa {{entregaSombrio}}. Para Blumenau, consulte datas e valores. O local e o horário são sempre combinados com você."), 'Ver entregas e retiradas', '/envio'],
+        prazoentrega: [textoMarca("O prazo de entrega depende da cidade, da data e dos produtos escolhidos e precisa ser confirmado pela equipe. Em Sombrio, cardápios especiais exigem pelo menos {{antecedencia}} de antecedência. Para Blumenau, consulte as datas e a disponibilidade antes de fechar o pedido."), 'Consultar prazo de entrega', askTeam('Gostaria de consultar o prazo de entrega.')],
         terceiro: ['Outra pessoa pode receber ou retirar seu pedido. Basta avisar pelo WhatsApp quem ficará responsável, para combinarmos tudo com cuidado.', 'Avisar a equipe', askTeam('Outra pessoa vai receber ou retirar meu pedido. Gostaria de informar os detalhes.')],
         reagendar: ['Avise pelo WhatsApp se surgir um imprevisto. Para retirada, combinamos outro horário. Se a entrega precisar ser refeita por uma mudança solicitada por você, haverá uma nova taxa, informada no reagendamento.', 'Reagendar meu pedido', askTeam('Preciso reagendar a entrega ou retirada do meu pedido.')],
         encomenda: ['Preparamos presentes e encomendas para encontros, empresas e celebrações. Conte sua ideia para combinarmos os doces, a apresentação e os prazos.', 'Solicitar orçamento', askTeam('Gostaria de conversar sobre uma encomenda especial.')],
@@ -79,6 +115,8 @@
             ['pagamento', /(?:aceit|paga|parcel).*\bcartao\b|\bcartao\b.*(?:aceit|paga|parcel|credito|debito)/],
             ['cartao', /\bcartao\b/],
             ['caixa', /sortid|mistur|sabores diferentes|(?:montar|personalizar).*(?:caixa|box)|(?:caixa|box).*(?:sabor|mistur)/],
+            ['prazoentrega', /(?:prazo|quanto tempo|quando|que dia|qual dia).*(?:entreg|envio|chega)|(?:entreg|envio).*(?:prazo|quanto tempo|quando|que dia|qual dia)/],
+            ['presente', /entreg.*present|present.*entreg/],
             ['blumenau', /blumenau/],
             ['sombrio', /sombrio.*(?:entreg|frete|domicilio)|(?:entreg|frete|domicilio).*sombrio/],
             ['retirada', /retir|buscar|\bifc\b/],
@@ -90,10 +128,6 @@
             ['antecedencia', /anteced|prazo|quanto tempo.*(?:antes|prepar|encomend)/],
             ['finalizar', /como.*confirm|confirmar.*(?:pedido|encomenda)/],
             ['pagamento', /pag|pix|sinal|parcela|credito|debito|dinheiro/],
-            ['presente', /entreg.*present|present.*entreg/],
-            ['blumenau', /blumenau/],
-            ['sombrio', /sombrio.*(?:entreg|frete|domicilio)|(?:entreg|frete|domicilio).*sombrio/],
-            ['retirada', /retir|buscar|\bifc\b/],
             ['horarios', /horario|atend.*(?:hora|dia)|funciona.*(?:hora|dia)|abrem|fecham/],
             ['entrega', /entreg|frete|envio|cobertura|endereco|\bcep\b|bairro|motoboy/],
             ['presente', /presentead|presentear|presente|surpresa/],
@@ -105,7 +139,7 @@
             ['encomenda', /encomend|evento|corporativ|festa|orcamento/],
             ['sabores', /cookie|sabor|cardapio|preco|valor|bolo|biscoito/],
             ['contato', /whatsapp|email|e-mail|contato|atendente|equipe|humano/],
-            ['faq', /pergunta|duvida|ajuda/]
+            ['faq', /perguntas frequentes|\bfaq\b|^(?:(?:ola|oi)[,! .]*)?(?:(?:tenho|estou com) (?:uma )?duvida|(?:preciso|quero) (?:de )?ajuda|ajuda)[?!. ]*$/]
         ];
         return rules.find(([, pattern]) => pattern.test(s))?.[0] || null;
     }

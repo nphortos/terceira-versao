@@ -517,6 +517,7 @@ function render(keepScroll, control) {
     }
     const main = app.querySelector('main');
     if (main) { main.id = 'conteudo'; main.tabIndex = -1; }
+    document.dispatchEvent(new Event('naporta:render'));
     document.title = (main?.querySelector('h1')?.textContent || 'Culinária com Afeto') + ' | NAPORTA';
     if (!keepScroll) window.scrollTo(0, 0)
     if (action) {

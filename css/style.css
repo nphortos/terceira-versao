@@ -201,7 +201,7 @@ nav a:hover,
     object-position: center 56%;
 }
 
-.product h3 {
+.product :is(h2, h3) {
     text-align: center;
     font-size: 19px;
 }
@@ -737,7 +737,7 @@ nav a:hover,
     grid-template-columns: minmax(130px, 1fr) minmax(300px, 2.2fr) minmax(150px, 1fr);
 }
 
-.footer-new .footer-links h4 {
+.footer-new .footer-links :is(h2, h4) {
     color: #E6C98D;
     font-weight: 600;
     letter-spacing: .03em
@@ -1086,7 +1086,7 @@ nav a:hover,
         text-align: left !important;
     }
 
-    .footer-new .footer-links h4 {
+    .footer-new .footer-links :is(h2, h4) {
         font-size: 12px !important;
         margin: 0 0 10px !important;
     }
@@ -1362,7 +1362,7 @@ body {
         object-fit: cover
     }
 
-    .product h3 {
+    .product :is(h2, h3) {
         font-size: 16px;
         min-height: 0;
         margin: 10px 6px
@@ -1467,7 +1467,7 @@ body {
         min-width: 0
     }
 
-    .footer-new .footer-links h4 {
+    .footer-new .footer-links :is(h2, h4) {
         font-size: 12px;
         margin: 0 0 10px
     }
@@ -1639,7 +1639,7 @@ body {
     margin: 10px 0 0 !important;
 }
 
-.footer-new .footer-links h4 {
+.footer-new .footer-links :is(h2, h4) {
     font-size: 12px !important;
 }
 
@@ -1728,7 +1728,7 @@ body {
         flex: 0 0 27px !important
     }
 
-    .footer-new .footer-links h4 {
+    .footer-new .footer-links :is(h2, h4) {
         font-size: 11px !important;
         margin: 0 0 7px !important
     }
@@ -2360,11 +2360,11 @@ body,
 h1,
 h2,
 h3,
-h4,
+:is(h2, h4),
 .heading,
 .footer-logo,
 .footer h2,
-.product h3,
+.product :is(h2, h3),
 .service h3 {
     color: var(--brown)
 }
@@ -2470,13 +2470,13 @@ a:focus-visible {
 }
 
 .footer.footer-new h2,
-.footer.footer-new h4,
+.footer.footer-new :is(h2, h4),
 .footer.footer-new .footer-logo,
 .footer.footer-new .footer-center h2,
 .footer.footer-new a,
 .footer.footer-new span,
 .footer.footer-new small,
-.footer.footer-new .footer-links h4,
+.footer.footer-new .footer-links :is(h2, h4),
 .footer.footer-new .footer-links a {
     color: var(--brand-cream) !important
 }
@@ -2708,8 +2708,8 @@ body::before {
     text-align: right !important
 }
 
-.footer-new .footer-links h4,
-.footer-new .footer-right h4 {
+.footer-new .footer-links :is(h2, h4),
+.footer-new .footer-right :is(h2, h4) {
     margin: 0 0 12px !important;
     line-height: 1.4 !important
 }
@@ -2778,8 +2778,8 @@ body::before {
         text-align: right !important
     }
 
-    .footer-new .footer-links h4,
-    .footer-new .footer-right h4 {
+    .footer-new .footer-links :is(h2, h4),
+    .footer-new .footer-right :is(h2, h4) {
         margin-top: 0 !important
     }
 }
@@ -3158,7 +3158,7 @@ body::before {
 }
 
 /* Favoritos compactos e ícone artesanal monocromático */
-.product h3 {
+.product :is(h2, h3) {
     min-height: 0 !important;
     margin: 8px 0 4px !important;
     line-height: 1.25
@@ -3879,7 +3879,7 @@ body::before {
 .shipping-label,
 .packaging-eyebrow,
 .shipping-option .shipping-highlight,
-.product-information > h3,
+.product-information > .product-price,
 .page p strong,
 .page p a,
 .back,
@@ -3906,7 +3906,7 @@ body::before {
     color: var(--wine);
 }
 
-.footer.footer-new .footer-links h4 {
+.footer.footer-new .footer-links :is(h2, h4) {
     color: var(--butter) !important;
 }
 
@@ -4103,4 +4103,57 @@ main p a:not(.btn), .empty a, .contact-alternative a {
 .skip-link:focus { transform: translateY(0); }
 @media(max-width:600px) {
     .afeto-chat .afeto-launch img { width: 76px !important; height: 88px !important; object-fit: contain; }
+}
+
+/* Semântica e contraste sem mudar a identidade da marca. */
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+.catalog-eyebrow, .about-eyebrow { color: #914D39 !important; }
+.product-price, .cart-subtotal {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.17em;
+}
+:where(a, button, input, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid #914D39;
+    outline-offset: 3px;
+}
+.footer-wrap :where(a, button):focus-visible, .afeto-head button:focus-visible {
+    outline-color: #FFF9F1;
+}
+.afeto-close { min-width: 44px; min-height: 44px; }
+.afeto-chat dialog.afeto-panel {
+    position: fixed;
+    inset: auto 20px 20px auto !important;
+    margin: 0;
+    padding: 0;
+    height: min(480px, calc(100dvh - 40px));
+    max-height: calc(100dvh - 40px) !important;
+    width: min(370px, calc(100vw - 40px));
+    color: var(--ink);
+}
+.afeto-panel::backdrop { background: rgb(0 0 0 / 25%); }
+.afeto-chat .afeto-messages { min-height: 0; }
+.afeto-messages:focus-visible { outline-offset: -3px; }
+@media(max-width:600px) {
+    .header .icons { gap: 10px; }
+    .header .afeto-chat { position: static; z-index: auto; }
+    .header .afeto-chat .afeto-launch { min-width: 44px; min-height: 44px; }
+    .header .afeto-chat .afeto-launch img { width: 38px !important; height: 38px !important; }
+    .header .afeto-chat .afeto-launch-label {
+        display: block !important; position: static; margin: 0; padding: 0;
+        font: 11px/1.2 'DM Sans', sans-serif; color: var(--ink);
+        background: transparent; border: 0; box-shadow: none;
+    }
+    .afeto-chat dialog.afeto-panel {
+        inset: auto 12px 12px !important;
+        width: calc(100vw - 24px);
+        height: min(480px, calc(100dvh - 24px));
+        max-height: calc(100dvh - 24px) !important;
+    }
+}
+@media(prefers-reduced-motion:reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
 }
